@@ -30,7 +30,7 @@ function action(event) {
 
 function loadMainPage(event) {
   
-  window.open("https://gabrieups.github.io/Addin/src/taskpane/taskpane.html", "_blank");
+  Office.context.ui.displayDialogAsync("https://gabrieups.github.io/Addin/src/taskpane/taskpane.html", { height: 50, width: 50 });
   event.completed();
 }
 
