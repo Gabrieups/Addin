@@ -30,9 +30,10 @@ function action(event) {
 
 function loadMainPage(event) {
   
-  window.open("https://gabrieups.github.io/Addin/src/taskpane/taskpane.html");
+  window.open("https://gabrieups.github.io/Addin/src/taskpane/taskpane.html", "_blank");
   event.completed();
 }
 
 // Register the function with Office.
 Office.actions.associate("action", action);
+Office.actions.associate("loadMainPage", loadMainPage);

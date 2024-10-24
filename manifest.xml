@@ -47,7 +47,7 @@
             <OfficeTab id="TabDefault">
               <Group id="msgReadGroup">
                 <Label resid="GroupLabel"/>
-                <Control xsi:type="Button" id="msgReadOpenPaneButton">
+                <!-- <Control xsi:type="Button" id="msgReadOpenPaneButton">
                   <Label resid="TaskpaneButton.Label"/>
                   <Supertip>
                     <Title resid="TaskpaneButton.Label"/>
@@ -61,8 +61,8 @@
                   <Action xsi:type="ShowTaskpane">
                     <SourceLocation resid="Taskpane.Url"/>
                   </Action>
-                </Control>
-                <!-- <Control xsi:type="Button" id="mainPageButton">
+                </Control> -->
+                <Control xsi:type="Button" id="mainPageButton">
                   <Label resid="mainPageLabel"/>
                   <Supertip>
                     <Title resid="mainPageTitle"/>
@@ -76,7 +76,7 @@
                   <Action xsi:type="ExecuteFunction">
                     <FunctionName>loadMainPage</FunctionName>
                   </Action>
-                </Control> -->
+                </Control>
               </Group>
             </OfficeTab>
           </ExtensionPoint>
@@ -91,7 +91,7 @@
       </bt:Images>
       <bt:Urls>
         <bt:Url id="Commands.Url" DefaultValue="https://gabrieups.github.io/Addin/commands.html"/>
-        <!-- <bt:Url id="mainPageUrl" DefaultValue="https://gabrieups.github.io/Addin/src/taskpane/taskpane.html" /> -->
+        <bt:Url id="mainPageUrl" DefaultValue="https://gabrieups.github.io/Addin/src/taskpane/taskpane.html" />
         <bt:Url id="Taskpane.Url" DefaultValue="https://gabrieups.github.io/Addin/src/taskpane/taskpane.html" />
       </bt:Urls>
       <bt:ShortStrings>
