@@ -30,7 +30,7 @@ function action(event) {
 
 function loadMainPage(event) {
   
-  window.open("https://localhost:3000/taskpane.html");
+  window.open("https://gabrieups.github.io/Addin/src/taskpane/taskpane.html");
   event.completed();
 }
 
