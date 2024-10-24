@@ -1,33 +1,38 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1"
-           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-           xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0"
-           xmlns:mailappor="http://schemas.microsoft.com/office/mailappversionoverrides/1.0"
-           xsi:type="MailApp">
-
-  <!-- Informações básicas do suplemento -->
+<OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0" xmlns:mailappor="http://schemas.microsoft.com/office/mailappversionoverrides/1.0" xsi:type="MailApp">
   <Id>ebd18481-3801-4fbf-930d-1d84b8406987</Id>
   <Version>1.0.0.0</Version>
   <ProviderName>Contoso</ProviderName>
   <DefaultLocale>en-US</DefaultLocale>
-  <DisplayName DefaultValue="Mapa de Salas"/>
+  <DisplayName DefaultValue="AddinProjectTest"/>
   <Description DefaultValue="A template to get started."/>
   <IconUrl DefaultValue="https://gabrieups.github.io/Addin/assets/icon-64.png"/>
   <HighResolutionIconUrl DefaultValue="https://gabrieups.github.io/Addin/assets/icon-128.png"/>
-
-  <!-- Hosts suportados (Mailbox para emails no Outlook) -->
+  <SupportUrl DefaultValue="https://www.contoso.com/help"/>
+  <AppDomains>
+    <AppDomain>https://www.contoso.com</AppDomain>
+  </AppDomains>
   <Hosts>
     <Host Name="Mailbox"/>
   </Hosts>
-
-  <!-- Requisitos para o suplemento funcionar -->
   <Requirements>
     <Sets>
       <Set Name="Mailbox" MinVersion="1.1"/>
     </Sets>
   </Requirements>
-
-  <!-- Command Surface para adicionar um botão na interface -->
+  <FormSettings>
+    <Form xsi:type="ItemRead">
+      <DesktopSettings>
+        <SourceLocation DefaultValue="https://gabrieups.github.io/Addin/src/taskpane/taskpane.html"/>
+        <RequestedHeight>250</RequestedHeight>
+      </DesktopSettings>
+    </Form>
+  </FormSettings>
+  <Permissions>ReadWriteItem</Permissions>
+  <Rule xsi:type="RuleCollection" Mode="Or">
+    <Rule xsi:type="ItemIs" ItemType="Message" FormType="Read"/>
+  </Rule>
+  <DisableEntityHighlighting>false</DisableEntityHighlighting>
   <VersionOverrides xmlns="http://schemas.microsoft.com/office/mailappversionoverrides" xsi:type="VersionOverridesV1_0">
     <Requirements>
       <bt:Sets DefaultMinVersion="1.3">
@@ -37,16 +42,11 @@
     <Hosts>
       <Host xsi:type="MailHost">
         <DesktopFormFactor>
-          <!-- Definindo o arquivo de funções -->
           <FunctionFile resid="Commands.Url"/>
-
-          <!-- Configurando o Command Surface na leitura de emails -->
           <ExtensionPoint xsi:type="MessageReadCommandSurface">
             <OfficeTab id="TabDefault">
               <Group id="msgReadGroup">
                 <Label resid="GroupLabel"/>
-
-                <!-- Botão para abrir o painel de tarefas -->
                 <Control xsi:type="Button" id="msgReadOpenPaneButton">
                   <Label resid="TaskpaneButton.Label"/>
                   <Supertip>
@@ -62,13 +62,11 @@
                     <SourceLocation resid="Taskpane.Url"/>
                   </Action>
                 </Control>
-
-                <!-- Botão adicional que pode executar uma função -->
-                <Control xsi:type="Button" id="openWebButton">
-                  <Label resid="OpenWebButton.Label"/>
+                <!-- <Control xsi:type="Button" id="mainPageButton">
+                  <Label resid="mainPageLabel"/>
                   <Supertip>
-                    <Title resid="OpenWebButton.Label"/>
-                    <Description resid="OpenWebButton.Tooltip"/>
+                    <Title resid="mainPageTitle"/>
+                    <Description resid="mainPageDesc"/>
                   </Supertip>
                   <Icon>
                     <bt:Image size="16" resid="Icon.16x16"/>
@@ -76,17 +74,15 @@
                     <bt:Image size="80" resid="Icon.80x80"/>
                   </Icon>
                   <Action xsi:type="ExecuteFunction">
-                    <FunctionName>openWebPage</FunctionName>
+                    <FunctionName>loadMainPage</FunctionName>
                   </Action>
-                </Control>
+                </Control> -->
               </Group>
             </OfficeTab>
           </ExtensionPoint>
         </DesktopFormFactor>
       </Host>
     </Hosts>
-
-    <!-- Definindo recursos (URLs, imagens e strings) -->
     <Resources>
       <bt:Images>
         <bt:Image id="Icon.16x16" DefaultValue="https://gabrieups.github.io/Addin/assets/icon-16.png"/>
@@ -95,16 +91,18 @@
       </bt:Images>
       <bt:Urls>
         <bt:Url id="Commands.Url" DefaultValue="https://gabrieups.github.io/Addin/commands.html"/>
-        <bt:Url id="Taskpane.Url" DefaultValue="https://gabrieups.github.io/Addin/src/taskpane/taskpane.html"/>
+        <!-- <bt:Url id="mainPageUrl" DefaultValue="https://gabrieups.github.io/Addin/src/taskpane/taskpane.html" /> -->
+        <bt:Url id="Taskpane.Url" DefaultValue="https://gabrieups.github.io/Addin/src/taskpane/taskpane.html" />
       </bt:Urls>
       <bt:ShortStrings>
         <bt:String id="GroupLabel" DefaultValue="Contoso Add-in"/>
         <bt:String id="TaskpaneButton.Label" DefaultValue="Show Taskpane"/>
-        <bt:String id="OpenWebButton.Label" DefaultValue="Open Web Page"/>
+        <bt:String id="mainPageTitle" DefaultValue="Main Page" />
+        <bt:String id="mainPageLabel" DefaultValue="Load Main Page" />
       </bt:ShortStrings>
       <bt:LongStrings>
         <bt:String id="TaskpaneButton.Tooltip" DefaultValue="Opens a pane displaying all available properties."/>
-        <bt:String id="OpenWebButton.Tooltip" DefaultValue="Opens a webpage in a new window."/>
+        <bt:String id="mainPageDesc" DefaultValue="Click to load the main page in the email screen." />
       </bt:LongStrings>
     </Resources>
   </VersionOverrides>
