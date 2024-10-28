@@ -1,30 +1,11 @@
-/*
- * Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license.
- * See LICENSE in the project root for license information.
- */
-
-/* global document, Office */
-
-Office.onReady((info) => {
-  if (info.host === Office.HostType.Outlook) {
-    // document.getElementById("run").onclick = run;
-    run()
-  }
+Office.onReady(function () {
+  // Verifica se o add-in está carregado
+  console.log("Add-in carregado!");
+  
+  // Carrega a página web no painel principal
+  Office.context.ui.displayMessage("Carregando página...");
+  var url = "https://gabrieups.github.io/Addin/src/taskpane/taskpane.html";
+  Office.ui.frame.open(url, { width: 400, height: 300 });
 });
 
-export async function run() {
-
-  console.log("heeyyy");
-  // /**
-  //  * Insert your Outlook code here
-  //  */
-
-  // const item = Office.context.mailbox.item;
-  // let insertAt = document.getElementById("item-subject");
-  // let label = document.createElement("b").appendChild(document.createTextNode("Subject: "));
-  // insertAt.appendChild(label);
-  // insertAt.appendChild(document.createElement("br"));
-  // insertAt.appendChild(document.createTextNode(item.subject));
-  // insertAt.appendChild(document.createElement("br"));
-}
 
