@@ -1,38 +1,25 @@
-/*
- * Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license.
- * See LICENSE in the project root for license information.
- */
-
-/* global Office */
-
-Office.onReady(() => {
-  // If needed, Office.js is ready to be called.
+Office.onReady(function (info) {
+  // Verifica se o add-in está carregado e pronto
+  if (info.host === Office.HostType.Outlook) {
+    console.log("Add-in carregado!");
+  }
 });
 
-/**
- * Shows a notification when the add-in command is executed.
- * @param event {Office.AddinCommands.Event}
- */
-function action(event) {
-  const message = {
-    type: Office.MailboxEnums.ItemNotificationMessageType.InformationalMessage,
-    message: "Performed action.",
-    icon: "Icon.80x80",
-    persistent: true,
-  };
+// Define a função para carregar a página
+function carregarPagina() {
+  var url = "https://gabrieups.github.io/Addin/src/taskpane/taskpane.html";
 
-  // Show a notification message.
-  Office.context.mailbox.item.notificationMessages.replaceAsync("action", message);
-
-  // Be sure to indicate when the add-in command function is complete.
-  event.completed();
+  Office.context.ui.displayDialogAsync(
+    url,
+    { height: 50, width: 50 },
+    function (asyncResult) {
+      if (asyncResult.status === Office.AsyncResultStatus.Failed) {
+        console.error("Erro ao carregar a página: " + asyncResult.error.message);
+      } else {
+        console.log("Página carregada com sucesso.");
+      }
+    }
+  );
 }
 
-function loadMainPage(event) {
-  
-  window.open("https://gabrieups.github.io/Addin/src/taskpane/taskpane.html");
-  event.completed();
-}
 
-// Register the function with Office.
-Office.actions.associate("action", action);
