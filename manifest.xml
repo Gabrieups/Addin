@@ -11,6 +11,9 @@
   <DefaultLocale>en-US</DefaultLocale>
   <DisplayName DefaultValue="Mapa de Salas"/>
   <Description DefaultValue="testando."/>
+  <AppDomains>
+   <AppDomain>https://gabrieups.github.io</AppDomain>
+  </AppDomains>
   <IconUrl DefaultValue="https://gabrieups.github.io/Addin/assets/icon-64.png"/>
   <HighResolutionIconUrl DefaultValue="https://gabrieups.github.io/Addin/assets/icon-128.png"/>
   
@@ -45,7 +48,7 @@
       <Host xsi:type="MailHost">
         <DesktopFormFactor>
           <FunctionFile resid="Commands.Url"/>
-          <ExtensionPoint xsi:type="MessageReadCommandSurface">
+          <ExtensionPoint xsi:type="AppointmentOrganizerCommandSurface">
             <OfficeTab id="TabDefault">
               <Group id="msgReadGroup">
                 <Label resid="GroupLabel"/>
