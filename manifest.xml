@@ -11,11 +11,11 @@
   <DefaultLocale>en-US</DefaultLocale>
   <DisplayName DefaultValue="Mapa de Salas"/>
   <Description DefaultValue="testando."/>
+  <IconUrl DefaultValue="https://gabrieups.github.io/Addin/assets/icon-64.png"/>
+  <HighResolutionIconUrl DefaultValue="https://gabrieups.github.io/Addin/assets/icon-128.png"/>
   <AppDomains>
    <AppDomain>https://gabrieups.github.io</AppDomain>
   </AppDomains>
-  <IconUrl DefaultValue="https://gabrieups.github.io/Addin/assets/icon-64.png"/>
-  <HighResolutionIconUrl DefaultValue="https://gabrieups.github.io/Addin/assets/icon-128.png"/>
   
   <Hosts>
     <Host Name="Mailbox"/>
