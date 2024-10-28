@@ -76,7 +76,7 @@
                     <bt:Image size="80" resid="Icon.80x80"/>
                   </Icon>
                   <Action xsi:type="ExecuteFunction">
-                    <ExecFunction>carregarPagina</ExecFunction>
+                    <FunctionName>carregarPagina</FunctionName>
                   </Action>
                 </Control>
               </Group>
