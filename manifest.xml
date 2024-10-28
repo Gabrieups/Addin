@@ -77,7 +77,7 @@
         <bt:Image id="Icon.80x80" DefaultValue="https://gabrieups.github.io/Addin/assets/icon-80.png"/>
       </bt:Images>
       <bt:Urls>
-        <bt:Url id="Commands.Url" DefaultValue="https://gabrieups.github.io/Addin/commands.js"/>
+        <bt:Url id="Commands.Url" DefaultValue="https://gabrieups.github.io/Addin/commands/commands.js"/>
         <bt:Url id="mainPageUrl" DefaultValue="https://gabrieups.github.io/Addin/src/taskpane/taskpane.html" />
         <bt:Url id="Taskpane.Url" DefaultValue="https://gabrieups.github.io/Addin/src/taskpane/taskpane.html" />
       </bt:Urls>

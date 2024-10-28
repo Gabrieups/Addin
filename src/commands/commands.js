@@ -11,7 +11,7 @@ function carregarPagina() {
 
   Office.context.ui.displayDialogAsync(
     url,
-    { height: 50, width: 50 },
+    { height: 100, width: 50 },
     function (asyncResult) {
       if (asyncResult.status === Office.AsyncResultStatus.Failed) {
         console.error("Erro ao carregar a página: " + asyncResult.error.message);
