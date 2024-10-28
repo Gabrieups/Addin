@@ -1,24 +1,28 @@
-Office.onReady(function (info) {
-  // Verifica se o add-in está carregado e pronto
+/*
+ * Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license.
+ * See LICENSE in the project root for license information.
+ */
+
+/* global document, Office */
+
+Office.onReady((info) => {
   if (info.host === Office.HostType.Outlook) {
-    console.log("Add-in carregado!");
+    document.getElementById("sideload-msg").style.display = "none";
+    document.getElementById("app-body").style.display = "flex";
+    document.getElementById("run").onclick = run;
   }
 });
 
-// Define a função para carregar a página
-function carregarPagina() {
-  var url = "https://gabrieups.github.io/Addin/src/taskpane/taskpane.html";
+export async function run() {
+  /**
+   * Insert your Outlook code here
+   */
 
-  Office.context.ui.displayDialogAsync(
-    url,
-    { height: 50, width: 50 },
-    function (asyncResult) {
-      if (asyncResult.status === Office.AsyncResultStatus.Failed) {
-        console.error("Erro ao carregar a página: " + asyncResult.error.message);
-      } else {
-        console.log("Página carregada com sucesso.");
-      }
-    }
-  );
+  const item = Office.context.mailbox.item;
+  let insertAt = document.getElementById("item-subject");
+  let label = document.createElement("b").appendChild(document.createTextNode("Subject: "));
+  insertAt.appendChild(label);
+  insertAt.appendChild(document.createElement("br"));
+  insertAt.appendChild(document.createTextNode(item.subject));
+  insertAt.appendChild(document.createElement("br"));
 }
-
