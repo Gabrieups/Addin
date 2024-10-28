@@ -8,7 +8,6 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://appsforoffice.microsoft.com; frame-src 'self' https://appsforoffice.microsoft.com https://gabrieups.github.io; connect-src 'self' https://appsforoffice.microsoft.com;">
         <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/1.1/hosted/office.js"></script>
         <title>Mapa de Salas</title>
 
@@ -20,6 +19,15 @@
 
         <!-- Template styles -->
         <link href="taskpane.css" rel="stylesheet" type="text/css" />
+        <script>
+            if (window.trustedTypes && window.trustedTypes.createPolicy) {              
+                window.trustedTypes.createPolicy('default', {
+                    createHTML: string => string,
+                    createScriptURL: string => string,
+                    createScript: string => string,
+                });  
+            }       
+        </script>
     </head>
 
     <body style="display: flex; flex-direction: column; background-color: white;">
