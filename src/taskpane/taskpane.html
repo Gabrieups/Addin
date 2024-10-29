@@ -8,8 +8,6 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://appsforoffice.microsoft.com https://js.monitor.azure.com; style-src 'self' 'unsafe-inline';">
-        <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/1.1/hosted/office.js"></script>
         <title>Mapa de Salas</title>
 
         <!-- Office JavaScript API -->
@@ -17,12 +15,14 @@
 
         <!-- Template styles -->
         <link href="taskpane.css" rel="stylesheet" type="text/css" />
+        <script type="text/javascript" src="taskpane.js"></script>
     </head>
 
     <body style="display: flex; flex-direction: column; background-color: white;">
-        <button>Mudar mapa</button>
-        <img src="../../assets/Salas_terreo.jpg" alt="Mapa Terreo" style="object-fit: contain; display: block;">
-        <img src="../../assets/Salas_primeiro_andar.jpg" alt="Mapa Primeiro Andar" style="object-fit: contain; display: none;">
+        <button id="MudaMapa">Mudar mapa</button>
+        <img id="mapaTerreo" src="../../assets/Salas_terreo.jpg" alt="Mapa Terreo" style="object-fit: contain; display: block;">
+        <img id="mapaPrimeiro" src="../../assets/Salas_primeiro_andar.jpg" alt="Mapa Primeiro Andar" style="object-fit: contain; display: none;">
+        <script src="taskpane.js"></script>
     </body>
 
 </html>
