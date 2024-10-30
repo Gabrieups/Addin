@@ -1,6 +1,7 @@
 let url = "https://gabrieups.github.io/Addin/src/taskpane/taskpane.html";
 // The onReady function must be run each time a new page is loaded.
-Office.onReady();
+Office.initialize = function () {
+};
 
 function showError(error) {
   Office.context.mailbox.item.notificationMessages.replaceAsync('aii deu erro', {
