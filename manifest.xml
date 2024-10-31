@@ -11,10 +11,10 @@
   <DefaultLocale>pt-BR</DefaultLocale>
   <DisplayName DefaultValue="Mapa de Salas"/>
   <Description DefaultValue="teste"/>
-  <IconUrl DefaultValue="https://localhost:3000/assets/icon-64.png"/>
-  <HighResolutionIconUrl DefaultValue="https://localhost:3000/assets/icon-128.png"/>
+  <IconUrl DefaultValue="https://breu-app-testing-bhcmcdadfqdthzhy.brazilsouth-01.azurewebsites.net/assets/icon-64.png"/>
+  <HighResolutionIconUrl DefaultValue="https://breu-app-testing-bhcmcdadfqdthzhy.brazilsouth-01.azurewebsites.net/assets/icon-128.png"/>
   <AppDomains>
-   <AppDomain>https://localhost:3000/</AppDomain>
+   <AppDomain>https://breu-app-testing-bhcmcdadfqdthzhy.brazilsouth-01.azurewebsites.net/</AppDomain>
   </AppDomains>
   
   <Hosts>
@@ -28,7 +28,7 @@
   <FormSettings>
     <Form xsi:type="ItemRead">
       <DesktopSettings>
-        <SourceLocation DefaultValue="https://localhost:3000/taskpane.html"/>
+        <SourceLocation DefaultValue="https://breu-app-testing-bhcmcdadfqdthzhy.brazilsouth-01.azurewebsites.net/taskpane.html"/>
         <RequestedHeight>250</RequestedHeight>
       </DesktopSettings>
     </Form>
@@ -93,15 +93,15 @@
         </Hosts>
         <Resources>
           <bt:Images>
-            <bt:Image id="residAssociateIcon16" DefaultValue="https://localhost:3000/assets/icon-16.png"/>
-            <bt:Image id="residAssociateIcon32" DefaultValue="https://localhost:3000/assets/icon-32.png"/>
-            <bt:Image id="residAssociateIcon80" DefaultValue="https://localhost:3000/assets/icon-80.png"/>
+            <bt:Image id="residAssociateIcon16" DefaultValue="https://breu-app-testing-bhcmcdadfqdthzhy.brazilsouth-01.azurewebsites.net/assets/icon-16.png"/>
+            <bt:Image id="residAssociateIcon32" DefaultValue="https://breu-app-testing-bhcmcdadfqdthzhy.brazilsouth-01.azurewebsites.net/assets/icon-32.png"/>
+            <bt:Image id="residAssociateIcon80" DefaultValue="https://breu-app-testing-bhcmcdadfqdthzhy.brazilsouth-01.azurewebsites.net/assets/icon-80.png"/>
           </bt:Images>
           <bt:Urls>
-            <bt:Url id="Commands.Url" DefaultValue="https://localhost:3000/commands.html"/>
-            <bt:Url id="residExtensionPointUrl" DefaultValue="https://localhost:3000/taskpane.html"/>
-            <!-- <bt:Url id="mainPageUrl" DefaultValue="https://localhost:3000/taskpane.html" /> -->
-            <bt:Url id="Taskpane.Url" DefaultValue="https://localhost:3000/taskpane.html" />
+            <bt:Url id="Commands.Url" DefaultValue="https://breu-app-testing-bhcmcdadfqdthzhy.brazilsouth-01.azurewebsites.net/commands.html"/>
+            <bt:Url id="residExtensionPointUrl" DefaultValue="https://breu-app-testing-bhcmcdadfqdthzhy.brazilsouth-01.azurewebsites.net/taskpane.html"/>
+            <!-- <bt:Url id="mainPageUrl" DefaultValue="https://breu-app-testing-bhcmcdadfqdthzhy.brazilsouth-01.azurewebsites.net/taskpane.html" /> -->
+            <bt:Url id="Taskpane.Url" DefaultValue="https://breu-app-testing-bhcmcdadfqdthzhy.brazilsouth-01.azurewebsites.net/taskpane.html" />
           </bt:Urls>
           <bt:ShortStrings>
             <bt:String id="residExtensionPointLabel" DefaultValue="Billable Hours"/>
