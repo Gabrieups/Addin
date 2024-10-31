@@ -1,36 +1,26 @@
-let url = "https://gabrieups.github.io/Addin/src/taskpane/taskpane.html";
-// The onReady function must be run each time a new page is loaded.
+let btnEvent;
+
 Office.initialize = function () {
 };
 
-function showError(error) {
-  Office.context.mailbox.item.notificationMessages.replaceAsync('aii deu erro', {
-    type: 'errorMessage',
-    message: error
-  });
-}
+let settingsDialog;
 
 function carregarPagina(event) {
+  btnEvent = event;
+  const url = new URI('dialog.html?warn=1').absoluteTo(window.location).toString();
+  const dialogOptions = { width: 60, height: 80 };
 
-  try {
-    Office.context.ui.displayDialogAsync(
-      url,
-      { height: 50, width: 50 },
-      function (asyncResult) {
-        if (asyncResult.status === Office.AsyncResultStatus.Failed) {
-          console.error("Erro ao carregar a página: " + asyncResult.error.message);
-          event.completed();
-        } else {
-          console.log("Página carregada com sucesso.");
-          event.completed();
-        }
-      }
-    );
-  } catch (err) {
-    showError(err);
-    event.completed();
-  }
+  Office.context.ui.displayDialogAsync(url, dialogOptions, function(result) {
+    settingsDialog = result.value;
+    settingsDialog.addEventHandler(Office.EventType.DialogEventReceived, dialogClosed);
+  });
 }
 
 // Register the function.
 Office.actions.associate("carregarPagina", carregarPagina);
+
+function dialogClosed(message) {
+  settingsDialog = null;
+  btnEvent.completed();
+  btnEvent = null;
+}

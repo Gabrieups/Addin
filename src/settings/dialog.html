@@ -22,6 +22,23 @@
   <img id="mapaPrimeiro" src="../../assets/Salas_primeiro_andar.jpg" alt="Mapa Primeiro Andar" style="object-fit: contain; display: none;">
   <script type="text/javascript" src="../../node_modules/jquery/dist/jquery.js"></script>
   <script type="text/javascript" src="dialog.js"></script>
+  <script>
+    const changeMap = document.getElementById("MudaMapa");
+  
+    function ALterarMapa(){
+      var mapaTerreo = document.getElementById("mapaTerreo");
+      var mapaPrimeriro = document.getElementById("mapaPrimeiro");
+  
+      if(mapaTerreo.style.display === "block"){
+        mapaTerreo.style.display = "none";
+        mapaPrimeriro.style.display = "block";
+      } else {
+        mapaTerreo.style.display = "block";
+        mapaPrimeriro.style.display = "none";
+      }
+    }
+    changeMap.addEventListener('click', ALterarMapa);
+  </script>
 </body>
 
 </html>
