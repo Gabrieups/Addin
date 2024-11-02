@@ -15,13 +15,8 @@ steps:
   persistCredentials: true
 
 - script: |
-    git config user.name "Gabriel Souza"
-    git config user.email "gabrielpaixao588@gmail.com"
-
-    git remote set-url origin https://$(AZURE_DEVOPS_PAT)@dev.azure.com/BREUPX-ORG/Learn-Project/_git/Addin
-    
-    git remote -v
-    
-    git push origin --all
-    git push origin --tags
+    git remote add azure https://BREUPX-ORG@dev.azure.com/BREUPX-ORG/Learn-Project/_git/Addin
+    git add .
+    git commit -m "Deploying changes from GitHub"
+    git push azure main --force
   displayName: 'Mirror changes to Azure DevOps repository'
