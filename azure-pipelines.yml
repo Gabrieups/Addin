@@ -1,10 +1,38 @@
+parameters:
+  - name: username
+    type: string
+    default: 'Gabriel Paixão'
+    
+  - name: email
+    type: string
+    default: 'gabrielpaixao588@gmail.com'
+
+  - name: repository
+    type: string
+    default: 'https://BREUPX-ORG@dev.azure.com/BREUPX-ORG/Learn-Project/_git/Addin'
+
 trigger:
+  branches:
+    include:
+      - '*'
+pr:
   branches:
     include:
       - '*'
 
 pool:
-  vmImage: windows-latest
+  vmImage: 'windows-latest'
 
 steps:
-- script: echo primeiro teste 
+- checkout: self
+
+- script: |
+    # Configure Git to sync with Azure DevOps
+    git config user.name ${{parameters.username}}
+    git config user.email ${{parameters.email}}
+    
+    git remote add azure-devops ${{parameters.repository}}
+
+    git push azure-devops --all
+    git push azure-devops --tags
+  displayName: 'Mirror changes to Azure DevOps repository'
