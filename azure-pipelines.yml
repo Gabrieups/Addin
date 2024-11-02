@@ -1,0 +1,10 @@
+trigger:
+  branches:
+    include:
+      - '*'
+
+pool:
+  vmImage: windows-latest
+
+steps:
+- script: echo script rodando 
