@@ -15,11 +15,12 @@ steps:
   persistCredentials: true
 
 - script: |
-    git config user.name "Gabriel Paixão"
+    git config user.name "Gabriel Souza"
     git config user.email "gabrielpaixao588@gmail.com"
 
-    # Adiciona o repositório remoto do Azure DevOps com o PAT para autenticação
     git remote set-url origin https://$(AZURE_DEVOPS_PAT)@dev.azure.com/BREUPX-ORG/Learn-Project/_git/Addin
+    
+    git remote -v
     
     git push origin --all
     git push origin --tags
