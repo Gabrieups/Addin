@@ -12,13 +12,15 @@ pool:
 
 steps:
 - checkout: self
+  persistCredentials: true
 
 - script: |
     git config user.name "Gabriel Paixão"
     git config user.email "gabrielpaixao588@gmail.com"
-    
-    git remote add azure-devops https://BREUPX-ORG@dev.azure.com/BREUPX-ORG/Learn-Project/_git/Addin
 
-    git push azure-devops --all
-    git push azure-devops --tags
+    # Adiciona o repositório remoto do Azure DevOps
+    git remote set-url origin $(Build.Repository.Uri)
+    
+    git push origin --all
+    git push origin --tags
   displayName: 'Mirror changes to Azure DevOps repository'
