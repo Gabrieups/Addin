@@ -15,7 +15,7 @@ steps:
   persistCredentials: true
 
 - script: |
-    git remote add azure https://$(AZURE_DEVOPS_PAT)G@dev.azure.com/BREUPX-ORG/Learn-Project/_git/Addin
+    git remote add azure https://$(AZURE_DEVOPS_PAT)@dev.azure.com/BREUPX-ORG/Learn-Project/_git/Addin
     git add .
     git commit -m "Deploying changes from GitHub"
     git push azure main --force
