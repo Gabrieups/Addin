@@ -1,30 +1,62 @@
-section {
-    margin: 10px 20px;
-  }
-  
-  .not-configured-warning {
-    display: none;
-  }
-  
-  .error-display {
-    display: none;
-  }
-  
-  .gist-list-container {
-    margin: 10px -8px;
-    display: none;
-  }
-  
-  .list-title {
-    border-bottom: 1px solid #a6a6a6;
-    padding-bottom: 5px;
-  }
-  
-  ul {
-    margin-top: 10px;
-  }
-  
-  .ms-ListItem-secondaryText,
-  .ms-ListItem-tertiaryText {
-    padding-left: 15px;
-  }
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+main{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.btn{
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.btn button{
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.andares{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 25%;
+}
+
+#NmAndar{
+  font-family: 'Poppins';
+  font-weight: 400;
+  margin: 0;
+  font-size: 3vw;
+  color: #323c8e;
+}
+
+img{
+  width: 63vw;
+}
+
+ul{
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+}
+
+span.seta {
+  color: #323c8e;
+  font-size: 5vw;
+  font-variation-settings: 'OPSZ' 24;
+}
+
+input[type="radio"]{
+  width: 1.1vw;
+  height: 1.1vw;
+  cursor: pointer;
+  accent-color: #323c9e;
+}
