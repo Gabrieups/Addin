@@ -19,7 +19,7 @@ steps:
     git config user.email "gabrielpaixao588@gmail.com"
 
     # Adiciona o repositório remoto do Azure DevOps
-    git remote set-url origin $(Build.Repository.Uri)
+    git remote set-url origin https://BREUPX-ORG@dev.azure.com/BREUPX-ORG/Learn-Project/_git/Addin
     
     git push origin --all
     git push origin --tags
