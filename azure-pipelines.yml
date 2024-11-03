@@ -28,7 +28,7 @@ steps:
       
       # Configurar as credenciais do GitHub
       $alias = 'Gabrieups' + "$(Github.PAT)"
-      $sourceURL = 'https://' + $alias + 'github.com/Gabrieups/Addin.git'
+      $sourceURL = 'https://' + $alias + '@github.com/Gabrieups/Addin'
       
       # Configurar as credenciais do Azure DevOps
       $destURL = 'https://' + "$(AzureDevOps.PAT)@dev.azure.com/BREUPX-ORG/Learn-Project/_git/Addin"
