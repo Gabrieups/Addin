@@ -2,9 +2,68 @@ trigger:
   branches:
     include:
       - '*'
+pr:
+  branches:
+    include:
+      - '*'
 
 pool:
-  vmImage: windows-latest
+  vmImage: 'windows-latest'
 
 steps:
-- script: echo primeiro teste 
+- checkout: self
+- task: PowerShell@2
+  inputs:
+    targetType: 'inline'
+    script: |
+      # Write your PowerShell commands here.
+      Write-Host ' - - - - - - - - - - - - - - - - - - - - - - - - -'
+      Write-Host 'Reflect GitHub repo changes to Azure DevOps repo'
+      Write-Host ' - - - - - - - - - - - - - - - - - - - - - - - - - '
+      
+      # Diretório temporário
+      $stageDir = '$(Build.SourcesDirectory)' | Split-Path
+      $githubDir = $stageDir + "\" + "gitHub"
+      $destination = $githubDir + "\" + "Addin.git"
+      
+      # Configurar as credenciais do GitHub
+      $alias = 'Gabrieups' + "$(Github.PAT)"
+      $sourceURL = 'https://' + $alias + '@github.com/Gabrieups/Addin'
+      
+      # Configurar as credenciais do Azure DevOps
+      $destURL = 'https://' + "$(AzureDevOps.PAT)@dev.azure.com/BREUPX-ORG/Learn-Project/_git/Addin"
+      
+      # Verificar se o diretório de trabalho existe e removê-lo se necessário
+      if ((Test-Path -path $githubDir)) {
+          Remove-Item -Path $githubDir -Recurse -force
+      }
+      
+      # Criar o diretório de trabalho
+      if (!(Test-Path -path $githubDir)) {
+          New-Item -ItemType directory -Path $githubDir
+          Set-Location $githubDir
+          git clone --mirror $sourceURL
+      } else {
+          Write-Host "The given folder path $githubDir already exists";
+      }
+      
+      # Navegar até o diretório de destino e configurar os remotes
+      Set-Location $destination
+      Write-Output '*****Git removing remote secondary****'
+      git remote rm secondary
+      Write-Output '*****Git remote add****'
+      git remote add --mirror=fetch secondary $destURL
+      
+      # Sincronizar alterações do GitHub para Azure DevOps
+      Write-Output '*****Git fetch origin****'
+      git fetch $sourceURL
+      Write-Output '*****Git push secondary****'
+      git push secondary --all
+      
+      Write-Output '**GitHub repo synced with Azure DevOps repo**'
+      
+      # Limpar o diretório temporário
+      Set-Location $stageDir
+      if ((Test-Path -path $githubDir)) {
+          Remove-Item -Path $githubDir -Recurse -force
+      }
