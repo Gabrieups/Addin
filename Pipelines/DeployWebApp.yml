@@ -1,0 +1,127 @@
+parameters:
+  - name: directory
+    type: string
+    default: $(Build.SourcesDirectory)
+    
+  - name: email
+    type: string
+
+  - name: usuario
+    type: string
+    default: 'Gabriel Paixão'
+
+  - name: branchAtual
+    type: string
+    default: $(Build.Sourcebranch)
+
+  - name: branchName
+    type: string
+    default: 'teste'
+
+  - name: commitMessage
+    type: string
+    default: 'linguiçamento'
+
+trigger: none
+
+pool:
+  vmImage: 'windows-latest'
+
+jobs:
+  - job: Git
+    displayName: Gitiando
+    steps:
+    - checkout: self
+      persistCredentials: true
+
+    - script: |
+        git config user.email "${{parameters.email}}"
+        git config user.name "${{parameters.usuario}}"
+      workingDirectory: ${{parameters.directory}}
+    
+    - script: |
+        git pull origin main
+        git checkout -b ${{parameters.branchName}}
+      workingDirectory: ${{parameters.directory}}
+      displayName: 'Criar nova Branch: ${{parameters.branchName}}'
+
+    - script: |
+        git add ${{parameters.directory}}/${{parameters.branchName}}
+        git commit --allow-empty -m "${{parameters.commitMessage}}"
+      workingDirectory: ${{parameters.directory}}
+      continueOnError: true
+
+    - script: |
+        git push --set-upstream --force origin ${{parameters.branchName}}
+      workingDirectory: ${{parameters.directory}}
+      displayName: 'Push ${{parameters.branchName}} Remote branch'
+
+  - job: Build
+    displayName: Buildando
+    dependsOn: Git
+    steps:
+    - checkout: self
+      persistCredentials: true
+    - task: PublishBuildArtifacts@1
+      inputs:
+        PathtoPublish: '.'
+        ArtifactName: 'drop-${{parameters.branchName}}'
+        publishLocation: 'Container'
+
+  - job: Deploy
+    displayName: Deployando
+    dependsOn: Build
+    condition: succeeded()
+    steps:
+    - checkout: self
+      persistCredentials: true
+    - task: AzureRmWebAppDeployment@4
+      inputs:
+        ConnectionType: 'AzureRM'
+        azureSubscription: 'Azure for Students (0f3bc5f8-c245-4de5-87b6-e3c3943c3a8a)'
+        appType: 'webApp'
+        WebAppName: 'breu-app-testing'
+        packageForLinux: '.'
+    # - task: ManualValidation@1
+    #   displayName: ValidaAi
+    #   timeoutInMinutes: 5
+    #   inputs:
+    #     notifyUsers: '${{parameters.email}}'
+    #     approvers: '${{parameters.email}}'
+    #     instructions: 'Continuar ?'
+
+  - job: DevPR
+    displayName: PullRequeestando para Dev
+    dependsOn: Deploy
+    condition: succeeded()
+    steps:
+    - checkout: self
+      persistCredentials: true
+    - task: CreatePullRequest@1
+      inputs:
+        repoType: 'Azure DevOps'
+        repositorySelector: 'select'
+        projectId: '91eca546-1523-420d-aaf5-366a574e4a74'
+        gitRepositoryId: 'dc3d78d9-dbaa-41b6-b78d-62cb5119f5ec'
+        sourcebranch: '${{parameters.branchName}}'
+        targetbranch: 'dev'
+        title: 'PullRequest ${{parameters.branchName}}'
+        linkWorkItems: false
+        autoComplete: true
+        deleteSourch: true
+
+    # - task: ManualValidation@1
+    #   displayName: ValidaAi2
+    #   timeoutInMinutes: 5
+    #   inputs:
+    #     notifyUsers: '${{parameters.email}}'
+    #     approvers: '${{parameters.email}}'
+    #     instructions: 'Continuar ?'
+
+  - job: MainPR
+    displayName: PullReuqestando para main
+    dependsOn: DevPR
+    steps:
+      - template: pullrequest-to-main.yml
+        parameters:
+          branch: ${{parameters.branchAtual}}

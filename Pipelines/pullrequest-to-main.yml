@@ -1,0 +1,14 @@
+parameters:
+  - name: branch
+    type: string
+
+steps:
+- task: CreatePullRequest@1
+  inputs:
+    repoType: 'Azure DevOps'
+    repositorySelector: 'currentBuild'
+    sourceBranch: 'dev'
+    targetBranch: 'main'
+    title: 'PullRequest Dev to Main by ${parameters.branch}}'
+    linkWorkItems: false
+    autoComplete: true
