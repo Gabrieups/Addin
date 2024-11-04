@@ -54,7 +54,7 @@ steps:
       git pull secondary main  # Adiciona um pull para sincronizar com o Azure DevOps
 
       Write-Output '*****Git push secondary****'
-      git push secondary --all  # Ou adicione `--force` se for seguro sobrescrever
+      git push secondary --all --force  # Ou adicione `--force` se for seguro sobrescrever
 
       Write-Output '**GitHub repo synced with Azure DevOps repo**'
 
