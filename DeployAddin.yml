@@ -27,7 +27,8 @@ jobs:
         replaceExistingArchive: true
 
  - job: Deploy
-   displayName: Deploy
+   displayName: Deploy 
+   dependsOn: Build
    steps:
    - task: AzureRmWebAppDeployment@4
      inputs:
