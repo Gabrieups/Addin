@@ -21,17 +21,17 @@ jobs:
    steps:
     - task: PublishBuildArtifacts@1
       inputs:
-        PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+        PathtoPublish: '.'
         ArtifactName: 'drop'
         publishLocation: 'Container'
 
- - job: Deploy
-   displayName: Deploy
-   steps:
-   - task: AzureRmWebAppDeployment@4
-     inputs:
-       ConnectionType: 'AzureRM'
-       azureSubscription: 'SUBS-PX-TEST(0f3bc5f8-c245-4de5-87b6-e3c3943c3a8a)'
-       appType: 'webApp'
-       WebAppName: 'breu-app-testing'
-       packageForLinux: '$(System.DefaultWorkingDirectory)/dist'
+#  - job: Deploy
+#    displayName: Deploy
+#    steps:
+#    - task: AzureRmWebAppDeployment@4
+#      inputs:
+#        ConnectionType: 'AzureRM'
+#        azureSubscription: 'SUBS-PX-TEST(0f3bc5f8-c245-4de5-87b6-e3c3943c3a8a)'
+#        appType: 'webApp'
+#        WebAppName: 'breu-app-testing'
+#        packageForLinux: '$(System.DefaultWorkingDirectory)/dist'
