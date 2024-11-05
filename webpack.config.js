@@ -24,6 +24,7 @@ module.exports = async (env, options) => {
     },
     output: {
       clean: true,
+      path: path.resolve(__dirname, 'dist'),
     },
     resolve: {
       extensions: [".html", ".js"],
