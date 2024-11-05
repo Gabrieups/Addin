@@ -3,6 +3,7 @@
 const devCerts = require("office-addin-dev-certs");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const path = require('path');
 
 const urlDev = "https://breu-app-testing-bhcmcdadfqdthzhy.brazilsouth-01.azurewebsites.net/";
 const urlProd = "https://breu-app-testing-bhcmcdadfqdthzhy.brazilsouth-01.azurewebsites.net/"; // CHANGE THIS TO YOUR PRODUCTION DEPLOYMENT LOCATION
@@ -24,7 +25,7 @@ module.exports = async (env, options) => {
     },
     output: {
       clean: true,
-      //path: path.resolve(__dirname, 'dist'),
+      path: path.resolve(__dirname, 'dist'),
     },
     resolve: {
       extensions: [".html", ".js"],
