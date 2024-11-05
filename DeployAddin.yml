@@ -1,13 +1,25 @@
 pool:
   vmImage: windows-latest
 
-steps:
-- task: NodeTool@0
-  inputs:
-    versionSpec: '20.x'
-  displayName: 'Install Node.js'
+jobs:
+ - job: Build
+   displayName: 'npm install and build'
+   steps:
+    - task: NodeTool@0
+      inputs:
+        versionSpec: '20.x'
 
-- script: |
-    npm install
-    npm run build
-  displayName: 'npm install and build'
+    - script: |
+        npm install
+        npm run build
+
+ - job: Deploy
+   displayName: Deploy
+   steps:
+   - task: AzureRmWebAppDeployment@4
+     inputs:
+       ConnectionType: 'AzureRM'
+       azureSubscription: 'SUBS-PX-TEST(0f3bc5f8-c245-4de5-87b6-e3c3943c3a8a)'
+       appType: 'webApp'
+       WebAppName: 'breu-app-testing'
+       packageForLinux: '$(System.DefaultWorkingDirectory)/dist'
