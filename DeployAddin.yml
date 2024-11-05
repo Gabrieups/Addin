@@ -26,10 +26,27 @@ jobs:
         archiveFile: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
         replaceExistingArchive: true
 
+    - script: |
+        echo $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
+    
+    - task: PublishBuildArtifacts@1
+      displayName: 'Publish Artifact'
+      inputs:
+        pathToPublish: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+        artifactName: 'drop'
+        publishLocation: 'Container'
+
  - job: Deploy
    displayName: Deploy 
    dependsOn: Build
    steps:
+   
+   - task: DownloadBuildArtifacts@1
+     inputs:
+       buildType: 'current'
+       downloadType: 'single'
+       artifactName: 'drop'
+       downloadPath: '$(Build.ArtifactStagingDirectory)'
    - task: AzureRmWebAppDeployment@4
      inputs:
        ConnectionType: 'AzureRM'
