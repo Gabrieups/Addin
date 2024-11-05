@@ -14,24 +14,25 @@ jobs:
     - script: |
         npm install
     - script: |
-        npm run build
-  
- - job: Publish
-   displayName: Publish
-   steps:
-    - task: PublishBuildArtifacts@1
-      inputs:
-        PathtoPublish: '.'
-        ArtifactName: 'drop'
-        publishLocation: 'Container'
+        npm run build --if-present
+        npm run test --if-present
 
-#  - job: Deploy
-#    displayName: Deploy
-#    steps:
-#    - task: AzureRmWebAppDeployment@4
-#      inputs:
-#        ConnectionType: 'AzureRM'
-#        azureSubscription: 'SUBS-PX-TEST(0f3bc5f8-c245-4de5-87b6-e3c3943c3a8a)'
-#        appType: 'webApp'
-#        WebAppName: 'breu-app-testing'
-#        packageForLinux: '$(System.DefaultWorkingDirectory)/dist'
+    - task: ArchiveFiles@2
+      displayName: 'Archive files'
+      inputs:
+        rootFolderOrFile: '$(System.DefaultWorkingDirectory)'
+        includeRootFolder: false
+        archiveType: zip
+        archiveFile: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
+        replaceExistingArchive: true
+
+ - job: Deploy
+   displayName: Deploy
+   steps:
+   - task: AzureRmWebAppDeployment@4
+     inputs:
+       ConnectionType: 'AzureRM'
+       azureSubscription: 'SUBS-PX-TEST(0f3bc5f8-c245-4de5-87b6-e3c3943c3a8a)'
+       appType: 'webApp'
+       WebAppName: 'breu-app-testing'
+       packageForLinux: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
