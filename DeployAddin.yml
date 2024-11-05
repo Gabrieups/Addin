@@ -15,6 +15,15 @@ jobs:
         npm install
     - script: |
         npm run build
+  
+ - job: Publish
+   displayName: Publish
+   steps:
+    - task: PublishBuildArtifacts@1
+      inputs:
+        PathtoPublish: '$(Build.SourcesDirectory)/dist'
+        ArtifactName: 'drop'
+        publishLocation: 'Container'
 
  - job: Deploy
    displayName: Deploy
