@@ -19,7 +19,7 @@ module.exports = async (env, options) => {
     devtool: "source-map",
     entry: {
       polyfill: ["core-js/stable", "regenerator-runtime/runtime"],
-      taskpane: ["./src/taskpane/taskpane.js", "./src/taskpane/taskpane.html"],
+      // taskpane: ["./src/taskpane/taskpane.js", "./src/taskpane/taskpane.html"],
       commands: "./src/commands/commands.js",
       dialog: "./src/settings/dialog.js",
     },
@@ -64,10 +64,10 @@ module.exports = async (env, options) => {
       }),
       new CopyWebpackPlugin({
         patterns: [
-          {
-            from: "./src/taskpane/taskpane.css",
-            to: "taskpane.css",
-          },
+          // {
+          //   from: "./src/taskpane/taskpane.css",
+          //   to: "taskpane.css",
+          // },
           {
             from: "./src/settings/dialog.css",
             to: "dialog.css",
