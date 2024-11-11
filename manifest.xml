@@ -89,19 +89,12 @@
             <bt:Url id="Taskpane.Url" DefaultValue="https://breu-app-testing-bhcmcdadfqdthzhy.brazilsouth-01.azurewebsites.net/dialog.html" />
           </bt:Urls>
           <bt:ShortStrings>
-            <bt:String id="residExtensionPointLabel" DefaultValue="Billable Hours"/>
-            <bt:String id="residGroupLabel"  DefaultValue="Change billing rate"/>
-            <bt:String id="residCustomTabLabel"  DefaultValue="Billable hours"/>
-            <bt:String id="residChangeToAssociateLabel"  DefaultValue="Associate Rate"/>
             <bt:String id="GroupLabel" DefaultValue="Contoso Add-in"/>
-            <bt:String id="TaskpaneButton.Label" DefaultValue="Show Taskpane"/>
-            <bt:String id="mainPageTitle" DefaultValue="Main Page" />
-            <bt:String id="mainPageLabel" DefaultValue="Load Main Page" />
+            <bt:String id="mainPageTitle" DefaultValue="Mapa de Salas" />
+            <bt:String id="mainPageLabel" DefaultValue="Mapa de Salas de Reunião" />
           </bt:ShortStrings>
           <bt:LongStrings>
-            <bt:String id="residChangeToAssociateDesc"  DefaultValue="Change to the associate billing rate: $127/hr"/>
-            <bt:String id="TaskpaneButton.Tooltip" DefaultValue="Opens a pane displaying all available properties."/>
-            <bt:String id="mainPageDesc" DefaultValue="Click to load the main page in the email screen." />
+            <bt:String id="mainPageDesc" DefaultValue="Veja as Salas de Reunião" />
           </bt:LongStrings>
         </Resources>
       </VersionOverrides>
