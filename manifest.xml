@@ -28,7 +28,7 @@
   <FormSettings>
     <Form xsi:type="ItemRead">
       <DesktopSettings>
-        <SourceLocation DefaultValue="https://breu-app-testing-bhcmcdadfqdthzhy.brazilsouth-01.azurewebsites.net/taskpane.html"/>
+        <SourceLocation DefaultValue="https://breu-app-testing-bhcmcdadfqdthzhy.brazilsouth-01.azurewebsites.net/dialog.html"/>
         <RequestedHeight>250</RequestedHeight>
       </DesktopSettings>
     </Form>
@@ -84,9 +84,9 @@
           </bt:Images>
           <bt:Urls>
             <bt:Url id="Commands.Url" DefaultValue="https://breu-app-testing-bhcmcdadfqdthzhy.brazilsouth-01.azurewebsites.net/commands.html"/>
-            <bt:Url id="residExtensionPointUrl" DefaultValue="https://breu-app-testing-bhcmcdadfqdthzhy.brazilsouth-01.azurewebsites.net/taskpane.html"/>
+            <bt:Url id="residExtensionPointUrl" DefaultValue="https://breu-app-testing-bhcmcdadfqdthzhy.brazilsouth-01.azurewebsites.net/dialog.html"/>
             <!-- <bt:Url id="mainPageUrl" DefaultValue="https://breu-app-testing-bhcmcdadfqdthzhy.brazilsouth-01.azurewebsites.net/taskpane.html" /> -->
-            <bt:Url id="Taskpane.Url" DefaultValue="https://breu-app-testing-bhcmcdadfqdthzhy.brazilsouth-01.azurewebsites.net/taskpane.html" />
+            <bt:Url id="Taskpane.Url" DefaultValue="https://breu-app-testing-bhcmcdadfqdthzhy.brazilsouth-01.azurewebsites.net/dialog.html" />
           </bt:Urls>
           <bt:ShortStrings>
             <bt:String id="residExtensionPointLabel" DefaultValue="Billable Hours"/>
