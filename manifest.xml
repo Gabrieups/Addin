@@ -28,7 +28,7 @@
   <FormSettings>
     <Form xsi:type="ItemRead">
       <DesktopSettings>
-        <SourceLocation DefaultValue="https://breu-app-testing-bhcmcdadfqdthzhy.brazilsouth-01.azurewebsites.net/dialog.html"/>
+        <SourceLocation DefaultValue="https://breu-app-testing-bhcmcdadfqdthzhy.brazilsouth-01.azurewebsites.net/taskpane.html"/>
         <RequestedHeight>250</RequestedHeight>
       </DesktopSettings>
     </Form>
@@ -84,17 +84,17 @@
           </bt:Images>
           <bt:Urls>
             <bt:Url id="Commands.Url" DefaultValue="https://breu-app-testing-bhcmcdadfqdthzhy.brazilsouth-01.azurewebsites.net/commands.html"/>
-            <bt:Url id="residExtensionPointUrl" DefaultValue="https://breu-app-testing-bhcmcdadfqdthzhy.brazilsouth-01.azurewebsites.net/dialog.html"/>
+            <bt:Url id="residExtensionPointUrl" DefaultValue="https://breu-app-testing-bhcmcdadfqdthzhy.brazilsouth-01.azurewebsites.net/taskpane.html"/>
             <!-- <bt:Url id="mainPageUrl" DefaultValue="https://breu-app-testing-bhcmcdadfqdthzhy.brazilsouth-01.azurewebsites.net/taskpane.html" /> -->
-            <bt:Url id="Taskpane.Url" DefaultValue="https://breu-app-testing-bhcmcdadfqdthzhy.brazilsouth-01.azurewebsites.net/dialog.html" />
+            <bt:Url id="Taskpane.Url" DefaultValue="https://breu-app-testing-bhcmcdadfqdthzhy.brazilsouth-01.azurewebsites.net/taskpane.html" />
           </bt:Urls>
           <bt:ShortStrings>
-            <bt:String id="GroupLabel" DefaultValue="Contoso Add-in"/>
-            <bt:String id="mainPageTitle" DefaultValue="Mapa de Salas" />
-            <bt:String id="mainPageLabel" DefaultValue="Mapa de Salas de Reunião" />
+            <bt:String id="GroupLabel" DefaultValue="Servier Add-in"/>
+            <bt:String id="mainPageTitle" DefaultValue="Mapa de Salas de Reunião" />
+            <bt:String id="mainPageLabel" DefaultValue="Mapa de Salas" />
           </bt:ShortStrings>
           <bt:LongStrings>
-            <bt:String id="mainPageDesc" DefaultValue="Veja as Salas de Reunião" />
+            <bt:String id="mainPageDesc" DefaultValue="Veja o Mapa de Salas de Reunião" />
           </bt:LongStrings>
         </Resources>
       </VersionOverrides>
