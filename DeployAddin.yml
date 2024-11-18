@@ -47,6 +47,7 @@ jobs:
        downloadType: 'single'
        artifactName: 'drop'
        downloadPath: '$(Build.ArtifactStagingDirectory)'
+   
    - task: AzureRmWebAppDeployment@4
      inputs:
        ConnectionType: 'AzureRM'
