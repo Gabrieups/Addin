@@ -73,6 +73,29 @@
                   </Group>
                 </OfficeTab>
               </ExtensionPoint>
+
+              <ExtensionPoint xsi:type="AppointmentAttendeeCommandSurface">
+                <OfficeTab id="TabDefault">
+                  <Group id="msgReadGroup">
+                    <Label resid="GroupLabel"/>
+                    <Control xsi:type="Button" id="mainPageButton">
+                      <Label resid="mainPageLabel"/>
+                      <Supertip>
+                        <Title resid="mainPageTitle"/>
+                        <Description resid="mainPageDesc"/>
+                      </Supertip>
+                      <Icon>
+                        <bt:Image size="16" resid="residAssociateIcon16"/>
+                        <bt:Image size="32" resid="residAssociateIcon32"/>
+                        <bt:Image size="80" resid="residAssociateIcon80"/>
+                      </Icon>
+                      <Action xsi:type="ExecuteFunction">
+                        <FunctionName>carregarPagina</FunctionName>
+                      </Action>
+                    </Control>
+                  </Group>
+                </OfficeTab>
+              </ExtensionPoint>
             </DesktopFormFactor>
           </Host>
         </Hosts>
