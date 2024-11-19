@@ -76,9 +76,9 @@
 
               <ExtensionPoint xsi:type="AppointmentAttendeeCommandSurface">
                 <OfficeTab id="TabDefault">
-                  <Group id="msgReadGroup">
+                  <Group id="apptReadDemoGroup">
                     <Label resid="GroupLabel"/>
-                    <Control xsi:type="Button" id="mainPageButton">
+                    <Control xsi:type="Button" id="mainPageButton2">
                       <Label resid="mainPageLabel"/>
                       <Supertip>
                         <Title resid="mainPageTitle"/>
