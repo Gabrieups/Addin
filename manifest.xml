@@ -17,6 +17,19 @@
    <AppDomain>https://breu-app-testing-bhcmcdadfqdthzhy.brazilsouth-01.azurewebsites.net/</AppDomain>
   </AppDomains>
   
+  <WebApplicationInfo>
+    <Id>32994c18-00d0-41a2-aa76-31955a564ea1</Id>
+    <Resource>api://localhost:3000/32994c18-00d0-41a2-aa76-31955a564ea1</Resource>
+    <Scopes>
+        <Scope>email</Scope>
+        <Scope>offic_access</Scope>
+        <Scope>openid</Scope>
+        <Scope>profile</Scope>
+        <Scope>user.read.all</Scope>
+        <Scope>user.readbasic.all</Scope>
+    </Scopes>
+  </WebApplicationInfo>
+
   <Hosts>
     <Host Name="Mailbox"/>
   </Hosts>
