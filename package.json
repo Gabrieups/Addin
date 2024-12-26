@@ -7,6 +7,7 @@
   },
   "license": "MIT",
   "config": {
+    "document": "https://outlook.office.com/mail",
     "app_to_debug": "outlook",
     "app_type_to_debug": "desktop",
     "dev_server_port": 3000

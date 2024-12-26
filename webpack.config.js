@@ -6,7 +6,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require('path');
 
 const urlDev = "https://localhost:3000/";
-const urlProd = "https://breu-app-testing-bhcmcdadfqdthzhy.brazilsouth-01.azurewebsites.net/"; // CHANGE THIS TO YOUR PRODUCTION DEPLOYMENT LOCATION
+const urlProd = "https://localhost:3000/"; // CHANGE THIS TO YOUR PRODUCTION DEPLOYMENT LOCATION
 
 async function getHttpsOptions() {
   const httpsOptions = await devCerts.getHttpsServerOptions();
