@@ -108,9 +108,9 @@
           </bt:Images>
           <bt:Urls>
             <bt:Url id="Commands.Url" DefaultValue="https://breu-app-testing-bhcmcdadfqdthzhy.brazilsouth-01.azurewebsites.net//commands.html"/>
-            <bt:Url id="residExtensionPointUrl" DefaultValue="https://breu-app-testing-bhcmcdadfqdthzhy.brazilsouth-01.azurewebsites.net//taskpane.html"/>
+            <!-- <bt:Url id="residExtensionPointUrl" DefaultValue="https://breu-app-testing-bhcmcdadfqdthzhy.brazilsouth-01.azurewebsites.net//taskpane.html"/> -->
             <!-- <bt:Url id="mainPageUrl" DefaultValue="https://breu-app-testing-bhcmcdadfqdthzhy.brazilsouth-01.azurewebsites.net//taskpane.html" /> -->
-            <bt:Url id="Taskpane.Url" DefaultValue="https://breu-app-testing-bhcmcdadfqdthzhy.brazilsouth-01.azurewebsites.net//taskpane.html" />
+            <!-- <bt:Url id="Taskpane.Url" DefaultValue="https://breu-app-testing-bhcmcdadfqdthzhy.brazilsouth-01.azurewebsites.net//taskpane.html" /> -->
           </bt:Urls>
           <bt:ShortStrings>
             <bt:String id="GroupLabel" DefaultValue="Servier Add-in"/>
@@ -122,8 +122,8 @@
           </bt:LongStrings>
         </Resources>
         <WebApplicationInfo>
-          <Id>32994c18-00d0-41a2-aa76-31955a564ea1</Id>
-          <Resource>api://breu-app-testing-bhcmcdadfqdthzhy.brazilsouth-01.azurewebsites.net//32994c18-00d0-41a2-aa76-31955a564ea1</Resource>
+          <Id>5d0b96f4-2dd7-4a57-829d-b6b3cd06a2e7</Id>
+          <Resource>api://breu-app-testing-bhcmcdadfqdthzhy.brazilsouth-01.azurewebsites.net/5d0b96f4-2dd7-4a57-829d-b6b3cd06a2e7</Resource>
           <Scopes>
               <Scope>email</Scope>
               <Scope>profile</Scope>
