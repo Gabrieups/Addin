@@ -20,14 +20,17 @@
         <link href="taskpane.css" rel="stylesheet" type="text/css" />
     </head>
 
-    <body style="display: flex; flex-direction: column; background-color: white;">
-        <button id="MudaMapa">Mudar mapa</button>
-        <img id="mapaTerreo" src="../../assets/Salas_terreo.jpg" alt="Mapa Terreo" style="object-fit: contain; display: block;">
-        <img id="mapaPrimeiro" src="../../assets/Salas_primeiro_andar.jpg" alt="Mapa Primeiro Andar" style="object-fit: contain; display: none;">
-        <script src="taskpane.js"></script>
-        <script type="text/javascript" src="../../node_modules/showdown/dist/showdown.min.js"></script>
-        <script type="text/javascript" src="../../node_modules/urijs/src/URI.min.js"></script>
-        <script type="text/javascript" src="../../node_modules/jquery/dist/jquery.js"></script>
+    <body>
+        <h1>Welcome</h1>
+        <p>
+          Sign in to Office, then choose the <b>Get ID Token</b> button to see your
+          ID token information.
+        </p>
+        <button id="getIDToken">Get ID Token</button>
+        <div>
+          <span id="userInfo"></span>
+        </div>
+        <script type="text/javascript" src="taskpane.js"></script>
     </body>
 
 </html>

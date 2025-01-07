@@ -7,7 +7,7 @@
   <title>Mapa de Salas</title>
 
   <!-- Office JavaScript API -->
-  <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/1.1/hosted/office.js"></script>
+  <!-- <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/1.1/hosted/office.js"></script> -->
 
   <script type="text/javascript" src="dialog.js"></script>
 
@@ -16,49 +16,14 @@
 
   <!-- Template styles -->
   <link href="dialog.css" rel="stylesheet" type="text/css" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap" />
 </head>
 
 <body style="background-color: white;">
   <main>
-    <div class="btn">
-      <button onclick="ALterarMapa()"><span class="material-symbols-outlined seta">chevron_left</span></button>
-      <div class="andares">
-        <p id="NmAndar">Térreo</p>
-        <ul>
-          <li><input onclick="ALterarMapa()" type="radio" name="radioBtn" id="TerreoSelec" checked></li>
-          <li><input onclick="ALterarMapa()" type="radio" name="radioBtn" id="PrimeiroSelec"></li>
-        </ul>
-      </div>
-      <button onclick="ALterarMapa()"><span class="material-symbols-outlined seta">chevron_right</span></button>
-    </div>
-    <img id="mapaTerreo" src="../../assets/Salas_terreo.jpg" alt="Mapa Terreo" style="object-fit: contain; display: block;">
-    <img id="mapaPrimeiro" src="../../assets/Salas_primeiro_andar.jpg" alt="Mapa Primeiro Andar" style="object-fit: contain; display: none;">
+    <img id="mapaPrimeiro" src='https://localhost:44339/images/BR1_teste.jpg' alt="Mapa Primeiro Andar" style="object-fit: contain;;">
   </main>
 
-  
   <script type="text/javascript" src="../../node_modules/jquery/dist/jquery.js"></script>
-  <script>
-    function ALterarMapa(){
-      var mapaTerreo = document.getElementById("mapaTerreo");
-      var mapaPrimeriro = document.getElementById("mapaPrimeiro");
-  
-      if(mapaTerreo.style.display === "block"){
-        mapaTerreo.style.display = "none";
-        mapaPrimeriro.style.display = "block";
-        document.getElementById("NmAndar").innerHTML = "Primeiro Andar"
-        document.getElementById("NmAndar").innerHTML = "Primeiro Andar"
-        document.getElementById("TerreoSelec").checked = false
-        document.getElementById("PrimeiroSelec").checked = true
-      } else {
-        mapaTerreo.style.display = "block";
-        mapaPrimeriro.style.display = "none";
-        document.getElementById("NmAndar").innerHTML = "Térreo"
-        document.getElementById("TerreoSelec").checked = true
-        document.getElementById("PrimeiroSelec").checked = false
-      }
-    }
-  </script>
 </body>
 
 </html>

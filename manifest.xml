@@ -11,24 +11,12 @@
   <DefaultLocale>pt-BR</DefaultLocale>
   <DisplayName DefaultValue="Mapa de Salas"/>
   <Description DefaultValue="teste"/>
-  <IconUrl DefaultValue="https://breu-app-testing-bhcmcdadfqdthzhy.brazilsouth-01.azurewebsites.net/assets/icon-64.png"/>
-  <HighResolutionIconUrl DefaultValue="https://breu-app-testing-bhcmcdadfqdthzhy.brazilsouth-01.azurewebsites.net/assets/icon-128.png"/>
+  <IconUrl DefaultValue="https://breu-app-testing-bhcmcdadfqdthzhy.brazilsouth-01.azurewebsites.net//assets/icon-64.png"/>
+  <HighResolutionIconUrl DefaultValue="https://breu-app-testing-bhcmcdadfqdthzhy.brazilsouth-01.azurewebsites.net//assets/icon-128.png"/>
+  <SupportUrl DefaultValue="https://www.contoso.com/help"/>
   <AppDomains>
    <AppDomain>https://breu-app-testing-bhcmcdadfqdthzhy.brazilsouth-01.azurewebsites.net/</AppDomain>
   </AppDomains>
-  
-  <WebApplicationInfo>
-    <Id>32994c18-00d0-41a2-aa76-31955a564ea1</Id>
-    <Resource>api://localhost:3000/32994c18-00d0-41a2-aa76-31955a564ea1</Resource>
-    <Scopes>
-        <Scope>email</Scope>
-        <Scope>offic_access</Scope>
-        <Scope>openid</Scope>
-        <Scope>profile</Scope>
-        <Scope>user.read.all</Scope>
-        <Scope>user.readbasic.all</Scope>
-    </Scopes>
-  </WebApplicationInfo>
 
   <Hosts>
     <Host Name="Mailbox"/>
@@ -41,7 +29,7 @@
   <FormSettings>
     <Form xsi:type="ItemRead">
       <DesktopSettings>
-        <SourceLocation DefaultValue="https://breu-app-testing-bhcmcdadfqdthzhy.brazilsouth-01.azurewebsites.net/taskpane.html"/>
+        <SourceLocation DefaultValue="https://breu-app-testing-bhcmcdadfqdthzhy.brazilsouth-01.azurewebsites.net//taskpane.html"/>
         <RequestedHeight>250</RequestedHeight>
       </DesktopSettings>
     </Form>
@@ -114,15 +102,15 @@
         </Hosts>
         <Resources>
           <bt:Images>
-            <bt:Image id="residAssociateIcon16" DefaultValue="https://breu-app-testing-bhcmcdadfqdthzhy.brazilsouth-01.azurewebsites.net/assets/icon-16.png"/>
-            <bt:Image id="residAssociateIcon32" DefaultValue="https://breu-app-testing-bhcmcdadfqdthzhy.brazilsouth-01.azurewebsites.net/assets/icon-32.png"/>
-            <bt:Image id="residAssociateIcon80" DefaultValue="https://breu-app-testing-bhcmcdadfqdthzhy.brazilsouth-01.azurewebsites.net/assets/icon-80.png"/>
+            <bt:Image id="residAssociateIcon16" DefaultValue="https://breu-app-testing-bhcmcdadfqdthzhy.brazilsouth-01.azurewebsites.net//assets/icon-16.png"/>
+            <bt:Image id="residAssociateIcon32" DefaultValue="https://breu-app-testing-bhcmcdadfqdthzhy.brazilsouth-01.azurewebsites.net//assets/icon-32.png"/>
+            <bt:Image id="residAssociateIcon80" DefaultValue="https://breu-app-testing-bhcmcdadfqdthzhy.brazilsouth-01.azurewebsites.net//assets/icon-80.png"/>
           </bt:Images>
           <bt:Urls>
-            <bt:Url id="Commands.Url" DefaultValue="https://breu-app-testing-bhcmcdadfqdthzhy.brazilsouth-01.azurewebsites.net/commands.html"/>
-            <bt:Url id="residExtensionPointUrl" DefaultValue="https://breu-app-testing-bhcmcdadfqdthzhy.brazilsouth-01.azurewebsites.net/taskpane.html"/>
-            <!-- <bt:Url id="mainPageUrl" DefaultValue="https://breu-app-testing-bhcmcdadfqdthzhy.brazilsouth-01.azurewebsites.net/taskpane.html" /> -->
-            <bt:Url id="Taskpane.Url" DefaultValue="https://breu-app-testing-bhcmcdadfqdthzhy.brazilsouth-01.azurewebsites.net/taskpane.html" />
+            <bt:Url id="Commands.Url" DefaultValue="https://breu-app-testing-bhcmcdadfqdthzhy.brazilsouth-01.azurewebsites.net//commands.html"/>
+            <bt:Url id="residExtensionPointUrl" DefaultValue="https://breu-app-testing-bhcmcdadfqdthzhy.brazilsouth-01.azurewebsites.net//taskpane.html"/>
+            <!-- <bt:Url id="mainPageUrl" DefaultValue="https://breu-app-testing-bhcmcdadfqdthzhy.brazilsouth-01.azurewebsites.net//taskpane.html" /> -->
+            <bt:Url id="Taskpane.Url" DefaultValue="https://breu-app-testing-bhcmcdadfqdthzhy.brazilsouth-01.azurewebsites.net//taskpane.html" />
           </bt:Urls>
           <bt:ShortStrings>
             <bt:String id="GroupLabel" DefaultValue="Servier Add-in"/>
@@ -133,6 +121,15 @@
             <bt:String id="mainPageDesc" DefaultValue="Veja o Mapa de Salas de Reunião" />
           </bt:LongStrings>
         </Resources>
+        <WebApplicationInfo>
+          <Id>32994c18-00d0-41a2-aa76-31955a564ea1</Id>
+          <Resource>api://breu-app-testing-bhcmcdadfqdthzhy.brazilsouth-01.azurewebsites.net//32994c18-00d0-41a2-aa76-31955a564ea1</Resource>
+          <Scopes>
+              <Scope>email</Scope>
+              <Scope>profile</Scope>
+              <Scope>User.Read</Scope>
+          </Scopes>
+        </WebApplicationInfo>
       </VersionOverrides>
     </VersionOverrides>
 </OfficeApp>
