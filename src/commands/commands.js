@@ -6,16 +6,15 @@ Office.initialize = function () {
 let settingsDialog;
 
 function carregarPagina(event) {
-  getSSOToken().then((token) =>{
-    btnEvent = event;
-    const url = new URI(`dialog.html?warn=1`).absoluteTo(window.location).toString();
-    const dialogOptions = { width: 60, height: 80 };
-  
-    Office.context.ui.displayDialogAsync(url, dialogOptions, function(result) {
-      settingsDialog = result.value;
-      settingsDialog.addEventHandler(Office.EventType.DialogEventReceived, dialogClosed);
-    })
-  });
+  getSSOToken()
+  btnEvent = event;
+  const url = new URI(`dialog.html?warn=1`).absoluteTo(window.location).toString();
+  const dialogOptions = { width: 60, height: 80 };
+
+  Office.context.ui.displayDialogAsync(url, dialogOptions, function(result) {
+    settingsDialog = result.value;
+    settingsDialog.addEventHandler(Office.EventType.DialogEventReceived, dialogClosed);
+  })
 }
 
 // Register the function.
