@@ -122,8 +122,8 @@
           </bt:LongStrings>
         </Resources>
         <WebApplicationInfo>
-          <Id>5d0b96f4-2dd7-4a57-829d-b6b3cd06a2e7</Id>
-          <Resource>api://breu-app-testing-bhcmcdadfqdthzhy.brazilsouth-01.azurewebsites.net/5d0b96f4-2dd7-4a57-829d-b6b3cd06a2e7</Resource>
+          <Id>ec7115a3-f917-4d65-bcb3-22d363585f20</Id>
+          <Resource>api://breu-app-testing-bhcmcdadfqdthzhy.brazilsouth-01.azurewebsites.net/ec7115a3-f917-4d65-bcb3-22d363585f20</Resource>
           <Scopes>
               <Scope>email</Scope>
               <Scope>profile</Scope>
