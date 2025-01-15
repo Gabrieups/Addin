@@ -56,7 +56,7 @@ steps:
 
       # Remove o remoto secundário "secondary" se ele já existir
       Write-Host "Removendo remoto 'secondary' (se existente)"
-      git remote rm secondary 2>$null
+      git remote rm secondary
 
       # Adiciona o repositório Azure DevOps como remoto secundário
       Write-Host "Adicionando remoto 'secondary' apontando para Azure DevOps"
