@@ -68,7 +68,7 @@ steps:
 
       # (Opcional) Sincroniza o repositório Azure DevOps localmente antes de enviar
       Write-Host "Sincronizando com o repositório Azure DevOps (opcional)"
-      git pull secondary main 2>$null
+      git pull secondary main
 
       # Realiza o push de todas as alterações para o repositório Azure DevOps
       Write-Host "Enviando todas as alterações para o repositório Azure DevOps"
