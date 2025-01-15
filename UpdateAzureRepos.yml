@@ -17,17 +17,17 @@ steps:
     targetType: 'inline'
     script: |
       Write-Host ' - - - - - - - - - - - - - - - - - - - - - - - - -'
-      Write-Host 'Reflect GitHub repo changes to Azure DevOps repo'
+      Write-Host 'Refletir mudanças do repositório GitHub no repositório Azure DevOps'
       Write-Host ' - - - - - - - - - - - - - - - - - - - - - - - - - '
 
       $stageDir = '$(Build.SourcesDirectory)' | Split-Path
       $githubDir = $stageDir + "\" + "gitHub"
-      $destination = $githubDir + "\" + "Addin.git"
+      $source = $githubDir + "\" + "Addin.git"
 
       $alias = 'Gabrieups' + "$(Github.PAT)"
       $sourceURL = 'https://' + $alias + '@github.com/Gabrieups/Addin'
 
-      $destURL = 'https://' + "$(AzureDevOps.PAT)@dev.azure.com/BREUPX-ORG/Learn-Project/_git/Addin"
+      $dstinationURL = 'https://' + "$(AzureDevOps.PAT)@dev.azure.com/BREUPX-ORG/Learn-Project/_git/Addin"
 
       if ((Test-Path -path $githubDir)) {
           Remove-Item -Path $githubDir -Recurse -force
@@ -41,11 +41,11 @@ steps:
           Write-Host "The given folder path $githubDir already exists";
       }
 
-      Set-Location $destination
+      Set-Location $source
       Write-Output '*****Git removing remote secondary****'
       git remote rm secondary
       Write-Output '*****Git remote add****'
-      git remote add --mirror=fetch secondary $destURL
+      git remote add --mirror=fetch secondary $dstinationURL
 
       Write-Output '*****Git fetch origin****'
       git fetch origin
