@@ -31,6 +31,8 @@ jobs:
           $githubDirectoryPath = Join-Path -Path $sourceDirectoryPath -ChildPath "gitHub"
           $githubRepositoryPath = Join-Path -Path $githubDirectoryPath -ChildPath "$(Build.Repository.Name).git"
 
+          Write-Host "$githubRepositoryPath"
+
           # O nome abaixo deve mudar de acordo com o dono do repositório.
           $alias = 'Gabrieups' + "$(Github.PAT)"
           
