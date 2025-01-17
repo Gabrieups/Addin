@@ -28,6 +28,8 @@ jobs:
           $sourceDirectoryPath = '$(Build.SourcesDirectory)' | Split-Path
           $RepositoryName = ($env:BUILD_REPOSITORY_NAME -split '/')[1]
           $ownerRepositoryName = ($env:BUILD_REPOSITORY_NAME -split '/')[0]
+
+          Write-Host "repositório padrão $sourceDirectoryPath"
           
           # Combina o diretório de origem com 'gitHub' para formar o caminho do repositório que será clonado.
           $githubDirectoryPath = Join-Path -Path $sourceDirectoryPath -ChildPath "gitHub"
