@@ -37,9 +37,6 @@ jobs:
           $githubRepositoryPath = Join-Path -Path $githubDirectoryPath -ChildPath "$RepositoryName.git"
 
           Write-Host "$githubRepositoryPath"
-
-          # O nome abaixo deve mudar de acordo com o dono do repositório.
-          $alias = $ownerRepositoryName + "$(Github.PAT)"
           
           # Define a URL para clonar o repositório GitHub
           $githubRepositoryUrl = "https://$ownerRepositoryName$(Github.PAT)@github.com/$(Build.Repository.Name)"
