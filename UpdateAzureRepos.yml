@@ -26,13 +26,14 @@ jobs:
 
           # Define o diretório de trabalho base a partir da pipeline de build
           $sourceDirectoryPath = '$(Build.SourcesDirectory)' | Split-Path
+          $RepositoryName = ($env:BUILD_REPOSITORY_NAME -split '/')[1]
 
           # Combina o diretório de origem com 'gitHub' para formar o caminho do repositório que será clonado.
           $githubDirectoryPath = Join-Path -Path $sourceDirectoryPath -ChildPath "gitHub"
 
-          Write-Host "$githubDirectoryPath"
+          Write-Host "diretório github: $githubDirectoryPath"
           
-          $githubRepositoryPath = Join-Path -Path $githubDirectoryPath -ChildPath "$(Build.Repository.Name).git"
+          $githubRepositoryPath = Join-Path -Path $githubDirectoryPath -ChildPath "$RepositoryName.git"
 
           Write-Host "$githubRepositoryPath"
 
@@ -44,7 +45,6 @@ jobs:
 
           $organizationName = ($env:SYSTEM_COLLECTIONURI -split '/')[3]
           $projectName = $env:SYSTEM_TEAMPROJECT
-          $RepositoryName = ($env:BUILD_REPOSITORY_NAME -split '/')[1]
           
           # Define a URL para o repositório Azure DevOps
           $azureRepositoryUrl = "https://$(AzureDevOps.PAT)@dev.azure.com/$organizationName/$projectName/_git/$RepositoryName"
