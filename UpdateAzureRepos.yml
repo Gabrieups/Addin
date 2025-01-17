@@ -42,7 +42,7 @@ jobs:
           $alias = $ownerRepositoryName + "$(Github.PAT)"
           
           # Define a URL para clonar o repositório GitHub
-          $githubRepositoryUrl = "https://$alias@github.com/$(Build.Repository.Name)"
+          $githubRepositoryUrl = "https://$ownerRepositoryName$(Github.PAT)@github.com/$(Build.Repository.Name)"
 
           $organizationName = ($env:SYSTEM_COLLECTIONURI -split '/')[3]
           $projectName = $env:SYSTEM_TEAMPROJECT
