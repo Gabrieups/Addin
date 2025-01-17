@@ -40,7 +40,7 @@ jobs:
 
           Write-Host "$githubRepositoryPath"
 
-          $alias = $ownerRepositoryName + "$(Github.PAT)"
+          $alias = $ownerRepositoryName + ":" + "$(Github.PAT)"
           
           # Define a URL para clonar o repositório GitHub
           $githubRepositoryUrl = "https://$alias@github.com/$(Build.Repository.Name)"
