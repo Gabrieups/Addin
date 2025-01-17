@@ -43,6 +43,8 @@ jobs:
           # Define a URL para o repositório Azure DevOps
           $azureRepositoryUrl = "https://$(AzureDevOps.PAT)@dev.azure.com/$organizationName/$projectName/_git/$projectName"
 
+          Write-Host "$projectName"
+          Write-Host "$organizationName"
           Write-Host "$azureRepositoryUrl"
           
           # Remove o diretório de trabalho se já existir, para garantir uma operação limpa
