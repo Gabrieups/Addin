@@ -8,91 +8,83 @@ pr:
       - '*'
 
 pool:
-  vmImage: windows-latest
+  vmImage: 'windows-latest'
 
-jobs:
- - job: ImportChanges
-   displayName: 'Importando mudanças do Github'
-   steps:
-    - checkout: self
+steps:
+- checkout: self
+- task: PowerShell@2
+  inputs:
+    targetType: 'inline'
+    script: |
+      # Exibe uma separação visual no console
+      Write-Host '============================================================='
+      Write-Host 'Sincronizando repositório GitHub com repositório Azure DevOps'
+      Write-Host '============================================================='
 
-    - task: PowerShell@2
-      inputs:
-        targetType: 'inline'
-        script: |
-          Write-Host '============================================================='
-          Write-Host 'Sincronizando repositório GitHub com repositório Azure DevOps'
-          Write-Host '============================================================='
+      # Define o diretório de trabalho base a partir da pipeline de build
+      $stageDir = '$(Build.SourcesDirectory)' | Split-Path
 
-          # Define o diretório de trabalho base a partir da pipeline de build
-          $sourceDirectoryPath = '$(Build.SourcesDirectory)' | Split-Path
+      # Define o diretório onde o repositório GitHub será clonado
+      $githubDir = Join-Path -Path $stageDir -ChildPath "gitHub"
 
-          # Combina o diretório de origem com 'gitHub' para formar o caminho do repositório que será clonado.
-          $githubDirectoryPath = Join-Path -Path $sourceDirectoryPath -ChildPath "gitHub"
-          $githubRepositoryPath = Join-Path -Path $githubDirectoryPath -ChildPath "$(Build.Repository.Name).git"
+      # Define o caminho para o repositório GitHub clonado
+      $source = Join-Path -Path $githubDir -ChildPath "Addin.git"
 
-          Write-Host "$githubRepositoryPath"
+      # Cria o alias para autenticação no GitHub utilizando o token de acesso pessoal (PAT)
+      $alias = 'Gabrieups' + "$(Github.PAT)"
 
-          # O nome abaixo deve mudar de acordo com o dono do repositório.
-          $alias = 'Gabrieups' + "$(Github.PAT)"
-          
-          # Define a URL para clonar o repositório GitHub
-          $githubRepositoryUrl = "https://$alias@github.com/$(Build.Repository.Name)"
+      # Define a URL para clonar o repositório GitHub
+      $sourceURL = "https://$alias@github.com/Gabrieups/Addin"
 
-          $organizationName = ($env:SYSTEM_COLLECTIONURI -split '/')[3]
-          $projectName = $env:SYSTEM_TEAMPROJECT
-          $RepositoryName = ($env:BUILD_REPOSITORY_NAME -split '/')[1]
-          
-          # Define a URL para o repositório Azure DevOps
-          $azureRepositoryUrl = "https://$(AzureDevOps.PAT)@dev.azure.com/$organizationName/$projectName/_git/$RepositoryName"
+      # Define a URL para o repositório Azure DevOps
+      $destinationURL = "https://$(AzureDevOps.PAT)@dev.azure.com/BREUPX-ORG/Learn-Project/_git/Addin"
 
-          Write-Host "$githubRepositoryUrl"
-          Write-Host "$azureRepositoryUrl"
-          Write-Host "path: $githubDirectoryPath"
-          
-          # Remove o diretório de trabalho se já existir, para garantir uma operação limpa
-          if (Test-Path -Path $githubDirectoryPath) {
-              Write-Host "Removendo diretório existente: $githubDirectoryPath"
-              Remove-Item -Path $githubDirectoryPath -Recurse -Force
-          }
+      Write-Host "$destinationURL"
+      Write-Host "$sourceURL"
 
-          # Cria o diretório do GitHub e clona o repositório GitHub como espelho
-          Write-Host "Criando diretório: $githubDirectoryPath e clonando repositório GitHub"
-          New-Item -ItemType Directory -Path $githubDirectoryPath -Force | Out-Null
-          Set-Location -Path $githubDirectoryPath
-          git clone --mirror $githubRepositoryUrl
+      # Remove o diretório de trabalho se já existir, para garantir uma operação limpa
+      if (Test-Path -Path $githubDir) {
+          Write-Host "Removendo diretório existente: $githubDir"
+          Remove-Item -Path $githubDir -Recurse -Force
+      }
 
-          # Define o local de trabalho para o diretório do repositório clonado
-          Set-Location -Path $sourceDirectoryPath 
+      # Cria o diretório do GitHub e clona o repositório GitHub como espelho
+      Write-Host "Criando diretório: $githubDir e clonando repositório GitHub"
+      New-Item -ItemType Directory -Path $githubDir -Force | Out-Null
+      Set-Location -Path $githubDir
+      git clone --mirror $sourceURL
 
-          # Remove o remoto secundário "secondary" se ele já existir
-          Write-Host "Removendo remoto 'secondary' (se existente)"
-          git remote rm secondary
+      # Define o local de trabalho para o diretório do repositório clonado
+      Set-Location -Path $source
 
-          # Adiciona o repositório Azure DevOps como remoto secundário
-          Write-Host "Adicionando remoto 'secondary' apontando para Azure DevOps"
-          git remote add --mirror=fetch secondary $azureRepositoryUrl
+      # Remove o remoto secundário "secondary" se ele já existir
+      Write-Host "Removendo remoto 'secondary' (se existente)"
+      git remote rm secondary
 
-          # Sincroniza alterações do repositório GitHub
-          Write-Host "Sincronizando alterações do repositório GitHub"
-          git fetch origin
+      # Adiciona o repositório Azure DevOps como remoto secundário
+      Write-Host "Adicionando remoto 'secondary' apontando para Azure DevOps"
+      git remote add --mirror=fetch secondary $destinationURL
 
-          # (Opcional) Sincroniza o repositório Azure DevOps localmente antes de enviar
-          Write-Host "Sincronizando com o repositório Azure DevOps"
-          git pull secondary main
+      # Sincroniza alterações do repositório GitHub
+      Write-Host "Sincronizando alterações do repositório GitHub"
+      git fetch origin
 
-          # Realiza o push de todas as alterações para o repositório Azure DevOps
-          Write-Host "Enviando todas as alterações para o repositório Azure DevOps"
-          git push secondary --all --force
+      # (Opcional) Sincroniza o repositório Azure DevOps localmente antes de enviar
+      Write-Host "Sincronizando com o repositório Azure DevOps (opcional)"
+      git pull secondary main
 
-          # Exibe uma mensagem de conclusão da sincronização
-          Write-Host "============================================================="
-          Write-Host "Sincronização concluída com sucesso!"
-          Write-Host "============================================================="
+      # Realiza o push de todas as alterações para o repositório Azure DevOps
+      Write-Host "Enviando todas as alterações para o repositório Azure DevOps"
+      git push secondary --all --force
 
-          # Retorna ao diretório inicial e remove o diretório temporário
-          Set-Location -Path $sourceDirectoryPath
-          if (Test-Path -Path $githubDirectoryPath) {
-              Write-Host "Limpando o diretório temporário: $githubDirectoryPath"
-              Remove-Item -Path $githubDirectoryPath -Recurse -Force
-          }
+      # Exibe uma mensagem de conclusão da sincronização
+      Write-Host "============================================================="
+      Write-Host "Sincronização concluída com sucesso!"
+      Write-Host "============================================================="
+
+      # Retorna ao diretório inicial e remove o diretório temporário
+      Set-Location -Path $stageDir
+      if (Test-Path -Path $githubDir) {
+          Write-Host "Limpando o diretório temporário: $githubDir"
+          Remove-Item -Path $githubDir -Recurse -Force
+      }
