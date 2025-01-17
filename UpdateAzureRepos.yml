@@ -41,10 +41,10 @@ jobs:
 
           $organizationName = ($env:SYSTEM_COLLECTIONURI -split '/')[3]
           $projectName = $env:SYSTEM_TEAMPROJECT
-          $BuildRepositoryName = ($(Build.Repository.Name)  -split '/')[1]
+          $BuildRepositoryName = $(Build.Repository.Name)
           
           # Define a URL para o repositório Azure DevOps
-          $azureRepositoryUrl = "https://$(AzureDevOps.PAT)@dev.azure.com/$organizationName/$projectName/_git/$BuildRepositoryName"
+          $azureRepositoryUrl = "https://$(AzureDevOps.PAT)@dev.azure.com/$organizationName/$projectName/_git/($BuildRepositoryName)"
 
           Write-Host "$projectName"
           Write-Host "$organizationName"
