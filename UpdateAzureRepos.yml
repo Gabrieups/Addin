@@ -37,7 +37,7 @@ jobs:
           # Define a URL para clonar o repositório GitHub
           $githubRepositoryUrl = "https://$alias@github.com/$(Build.Repository.Name)"
 
-          $organizationName = ($env:SYSTEM_COLLECTIONURI -split '/')[2]
+          $organizationName = ($env:SYSTEM_COLLECTIONURI -split '/')[3]
           $projectName = $env:SYSTEM_TEAMPROJECT
           
           # Define a URL para o repositório Azure DevOps
